@@ -1,0 +1,19 @@
+{
+  "name": "covid19-travel-restrictions",
+  "version": "1.0.0",
+  "description": "Website for tracking travel entry restrictions for various countries",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josh2609/COVID19-travel-restrictions.git"
+  },
+  "author": "Josh Corps",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Josh2609/COVID19-travel-restrictions/issues"
+  },
+  "homepage": "https://github.com/Josh2609/COVID19-travel-restrictions#readme"
+}
