@@ -4,7 +4,11 @@
   "description": "Website for tracking travel entry restrictions for various countries",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js",
+    "server": "nodemon server/app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run start --prefix client\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/Josh2609/COVID19-travel-restrictions/issues"
   },
-  "homepage": "https://github.com/Josh2609/COVID19-travel-restrictions#readme"
+  "homepage": "https://github.com/Josh2609/COVID19-travel-restrictions#readme",
+  "dependencies": {
+    "create-react-app": "^3.4.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
+  }
 }
