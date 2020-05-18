@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss'
+import './index.css';
+import App from './App';
 
-class Car extends React.Component {
-  render() {
-    return <h2>COVID TRAVEL RESTRICTIONS</h2>;
-  }
-}
 ReactDOM.render(
-  <Car />,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
-

@@ -21,8 +21,12 @@
   },
   "homepage": "https://github.com/Josh2609/COVID19-travel-restrictions#readme",
   "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
     "create-react-app": "^3.4.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongojs": "^3.1.0",
+    "mongoose": "^5.9.14"
   },
   "devDependencies": {
     "concurrently": "^5.2.0"
