@@ -90,6 +90,7 @@ const MapChart = ({ setTooltipContent }) => {
     "#ff4c4c",
     "#ff0000"];
 
+
   return (
     <ComposableMap data-tip=""
       projectionConfig={{
@@ -108,10 +109,30 @@ const MapChart = ({ setTooltipContent }) => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-
                   onMouseEnter={() => {
                     const { NAME } = geo.properties;
-                    setTooltipContent(`${NAME}`);
+                    setTooltipContent(
+                      <div>
+                        <h3>{NAME}</h3>
+                        {d ? // if entryRestrictions true then entry not allowed
+                          d.entryRestrictions ? 
+                            <p style={{ color: "red" }}> Entry Allowed: No </p> 
+                            : <p style={{ color: "green" }}>Entry Allowed: Yes</p> 
+                          : ""}
+
+                        {d ? // if transitRestrictions true then transit not allowed
+                          d.transitRestrictions ? 
+                            <p style={{ color: "red" }}> Transit Allowed: No </p> 
+                            : <p style={{ color: "green" }}>Transit Allowed: Yes</p> 
+                          : ""}
+
+                        {d ? 
+                          d.quarantineRequired ? 
+                            <p style={{ color: "red" }}> Quarantine Required: Yes </p> 
+                            : <p style={{ color: "green" }}>Quarantine Required: No</p> 
+                          : ""}
+                      </div>
+                    );
                   }}
                   onMouseLeave={() => {
                     setTooltipContent("");
