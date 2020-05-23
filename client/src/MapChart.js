@@ -1,3 +1,61 @@
+// import React, { memo } from "react";
+// import {
+//   ZoomableGroup,
+//   ComposableMap,
+//   Geographies,
+//   Geography
+// } from "react-simple-maps";
+
+// const geoUrl =
+//   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+
+
+// const MapChart = ({ setTooltipContent }) => {
+//   return (
+//     <>
+//       <ComposableMap data-tip="" width="1200" projectionConfig={{ scale: 200 }}>
+//         <ZoomableGroup center={[20,0]}>
+//           <Geographies geography={geoUrl}>
+//             {({ geographies }) =>
+//               geographies.map(geo => (
+//                 <Geography
+//                   key={geo.rsmKey}
+//                   geography={geo}
+//                   onMouseEnter={() => {
+//                     const { NAME } = geo.properties;
+//                     setTooltipContent(`${NAME}`);
+//                   }}
+//                   onMouseLeave={() => {
+//                     setTooltipContent("");
+//                   }}
+//                   style={{
+//                     default: {
+//                       fill: "#D6D6DA",
+//                       outline: "none",
+//                       stroke: "#000000"
+//                     },
+//                     hover: {
+//                       fill: "#F53",
+//                       outline: "none"
+//                     },
+//                     pressed: {
+//                       fill: "#E42",
+//                       outline: "none"
+//                     }
+//                   }}
+//                 />
+//               ))
+//             }
+//           </Geographies>
+//         </ZoomableGroup>
+//       </ComposableMap>
+//     </>
+//   );
+// };
+
+// export default memo(MapChart);
+
+
 import React, { useEffect, useState } from "react";
 import {
   ComposableMap,
@@ -13,7 +71,7 @@ const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 
-const MapChart = () => {
+const MapChart = ({ setTooltipContent }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -23,7 +81,6 @@ const MapChart = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(data)
 
   // restriction level colours
   const colorArr = ["#7FFF00",
@@ -31,10 +88,10 @@ const MapChart = () => {
     "#ffb2b2",
     "#ff7f7f",
     "#ff4c4c",
-    "#ff0000"]; 
+    "#ff0000"];
 
   return (
-    <ComposableMap
+    <ComposableMap data-tip=""
       projectionConfig={{
         rotate: [-10, 0, 0],
         scale: 147
@@ -51,7 +108,33 @@ const MapChart = () => {
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={d? colorArr[d["restrictionLevel"]] : "#F5F4F6"}
+
+                  onMouseEnter={() => {
+                    const { NAME } = geo.properties;
+                    setTooltipContent(`${NAME}`);
+                  }}
+                  onMouseLeave={() => {
+                    setTooltipContent("");
+                  }}
+
+                  style={{
+                    default: {
+                      //fill: "#D6D6DA",
+                      outline: "none",
+                      stroke: "#000000"
+                    },
+                    hover: {
+                      fill: "#F53",
+                      outline: "none",
+                      stroke: "#000000"
+                    },
+                    pressed: {
+                      fill: "#E42",
+                      outline: "none",
+                      stroke: "#000000"
+                    }
+                  }}
+                  fill={d ? colorArr[d["restrictionLevel"]] : "#F5F4F6"}
                 />
               );
             })

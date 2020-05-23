@@ -11,20 +11,20 @@ import ReactTooltip from "react-tooltip";
 
 import MapChart from "./MapChart";
 
-// function Map() {
-//   const [content, setContent] = useState("");
-//   return (
-//     <div>
-//       <MapChart setTooltipContent={setContent} />
-//       <ReactTooltip>{content}</ReactTooltip>
-//     </div>
-//   );
-// }
+function Map() {
+  const [content, setContent] = useState("");
+  return (
+    <div>
+      <MapChart setTooltipContent={setContent} />
+      <ReactTooltip>{content}</ReactTooltip>
+    </div>
+  );
+}
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <MapChart />
+    <Map />
   </React.StrictMode>,
   document.getElementById('root')
 );

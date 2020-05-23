@@ -19,7 +19,6 @@ class CountryList extends Component {
     axios.get(`http://192.168.1.225:5000/api/country`)
       .then(res => {
         const countries = res.data.countries;
-        console.log(countries)
         this.setState({ countries });
       })
       .catch((err) => console.log(err));
