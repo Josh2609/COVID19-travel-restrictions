@@ -3,7 +3,7 @@
 import './index.css';
 import App from './App';
 
-
+import { HashRouter } from "react-router-dom";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import ReactTooltip from "react-tooltip";
@@ -23,8 +23,11 @@ function Map() {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <Map />
+    <HashRouter>
+      <App />
+      <Map />
+    </HashRouter>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

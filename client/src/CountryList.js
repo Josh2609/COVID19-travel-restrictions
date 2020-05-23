@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 import {
   Route,
-  NavLink,
-  HashRouter
+  NavLink
 } from "react-router-dom";
 import Country from './Country';
 
@@ -26,45 +25,43 @@ class CountryList extends Component {
 
   render() {
     return (
-      <HashRouter>
-        <div>
-          <input type="text" name="search"></input>
-          <table>
-            <thead>
-              <tr>
-                <th>Country</th>
-                <th>Entry Restrictions</th>
-                <th>Exit Restrictions</th>
-                <th>Transit Restrictions</th>
-                <th>Quarantine Required</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                this.state.countries.map((country, i) => {
-                  var route = "/country/" + country.name
-                  return (
-                    <tr key={i}>
-                      <th><NavLink to={route} >{country.name}</NavLink></th>
-                      <th>{country.entryRestrictions ? "Yes" : "No"}</th>
-                      <th>{country.exitRestrictions ? "Yes" : "No"}</th>
-                      <th>{country.transitRestrictions ? "Yes" : "No"}</th>
-                      <th>{country.quarantineRequired ? "Yes" : "No"}</th>
-                    </tr>
-                  );
+      <div>
+        <input type="text" name="search"></input>
+        <table>
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Entry Restrictions</th>
+              <th>Exit Restrictions</th>
+              <th>Transit Restrictions</th>
+              <th>Quarantine Required</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.state.countries.map((country, i) => {
+                var route = "/country/" + country.name
+                return (
+                  <tr key={i}>
+                    <th><NavLink to={route} >{country.name}</NavLink></th>
+                    <th>{country.entryRestrictions ? "Yes" : "No"}</th>
+                    <th>{country.exitRestrictions ? "Yes" : "No"}</th>
+                    <th>{country.transitRestrictions ? "Yes" : "No"}</th>
+                    <th>{country.quarantineRequired ? "Yes" : "No"}</th>
+                  </tr>
+                );
 
-                })
-              }
-            </tbody>
-          </table>
+              })
+            }
+          </tbody>
+        </table>
 
-          <div className="content">
+        <div className="content">
 
-            <Route exact path="/country/:countryName" component={Country} />
+          <Route exact path="/country/:countryName" component={Country} />
 
-          </div>
         </div>
-      </HashRouter>
+      </div>
     );
   }
 }

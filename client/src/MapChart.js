@@ -1,61 +1,4 @@
-// import React, { memo } from "react";
-// import {
-//   ZoomableGroup,
-//   ComposableMap,
-//   Geographies,
-//   Geography
-// } from "react-simple-maps";
-
-// const geoUrl =
-//   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-
-
-// const MapChart = ({ setTooltipContent }) => {
-//   return (
-//     <>
-//       <ComposableMap data-tip="" width="1200" projectionConfig={{ scale: 200 }}>
-//         <ZoomableGroup center={[20,0]}>
-//           <Geographies geography={geoUrl}>
-//             {({ geographies }) =>
-//               geographies.map(geo => (
-//                 <Geography
-//                   key={geo.rsmKey}
-//                   geography={geo}
-//                   onMouseEnter={() => {
-//                     const { NAME } = geo.properties;
-//                     setTooltipContent(`${NAME}`);
-//                   }}
-//                   onMouseLeave={() => {
-//                     setTooltipContent("");
-//                   }}
-//                   style={{
-//                     default: {
-//                       fill: "#D6D6DA",
-//                       outline: "none",
-//                       stroke: "#000000"
-//                     },
-//                     hover: {
-//                       fill: "#F53",
-//                       outline: "none"
-//                     },
-//                     pressed: {
-//                       fill: "#E42",
-//                       outline: "none"
-//                     }
-//                   }}
-//                 />
-//               ))
-//             }
-//           </Geographies>
-//         </ZoomableGroup>
-//       </ComposableMap>
-//     </>
-//   );
-// };
-
-// export default memo(MapChart);
-
-
+import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import {
   ComposableMap,
@@ -105,8 +48,10 @@ const MapChart = ({ setTooltipContent }) => {
           {({ geographies }) =>
             geographies.map(geo => {
               const d = data.find(s => s.iso3 === geo.properties.ISO_A3);
+              var route = "";
+              d ? route = "/country/" + d.name : route = "/";
               return (
-                <Geography
+                <NavLink to={route} ><Geography
                   key={geo.rsmKey}
                   geography={geo}
                   onMouseEnter={() => {
@@ -115,21 +60,21 @@ const MapChart = ({ setTooltipContent }) => {
                       <div>
                         <h3>{NAME}</h3>
                         {d ? // if entryRestrictions true then entry not allowed
-                          d.entryRestrictions ? 
-                            <p style={{ color: "red" }}> Entry Allowed: No </p> 
-                            : <p style={{ color: "green" }}>Entry Allowed: Yes</p> 
+                          d.entryRestrictions ?
+                            <p style={{ color: "red" }}> Entry Allowed: No </p>
+                            : <p style={{ color: "green" }}>Entry Allowed: Yes</p>
                           : ""}
 
                         {d ? // if transitRestrictions true then transit not allowed
-                          d.transitRestrictions ? 
-                            <p style={{ color: "red" }}> Transit Allowed: No </p> 
-                            : <p style={{ color: "green" }}>Transit Allowed: Yes</p> 
+                          d.transitRestrictions ?
+                            <p style={{ color: "red" }}> Transit Allowed: No </p>
+                            : <p style={{ color: "green" }}>Transit Allowed: Yes</p>
                           : ""}
 
-                        {d ? 
-                          d.quarantineRequired ? 
-                            <p style={{ color: "red" }}> Quarantine Required: Yes </p> 
-                            : <p style={{ color: "green" }}>Quarantine Required: No</p> 
+                        {d ?
+                          d.quarantineRequired ?
+                            <p style={{ color: "red" }}> Quarantine Required: Yes </p>
+                            : <p style={{ color: "green" }}>Quarantine Required: No</p>
                           : ""}
                       </div>
                     );
@@ -137,7 +82,6 @@ const MapChart = ({ setTooltipContent }) => {
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
-
                   style={{
                     default: {
                       //fill: "#D6D6DA",
@@ -156,7 +100,7 @@ const MapChart = ({ setTooltipContent }) => {
                     }
                   }}
                   fill={d ? colorArr[d["restrictionLevel"]] : "#F5F4F6"}
-                />
+                /></NavLink>
               );
             })
           }
