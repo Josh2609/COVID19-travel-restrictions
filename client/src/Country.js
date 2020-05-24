@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import ReactMarkdown from "react-markdown";
 
 class Country extends Component {
   state = {
@@ -19,6 +20,7 @@ class Country extends Component {
         .catch((err) => console.log(err));
     }
 
+
   }
   componentDidMount() {
     var path = this.props.location.pathname;
@@ -32,13 +34,14 @@ class Country extends Component {
         this.setState({ countryData });
       })
       .catch((err) => console.log(err));
-    console.log("statye = " + JSON.stringify(this.state))
+    
+
   }
 
   render() {
     return (
       <div>
-        <h2>{JSON.stringify(this.state)}</h2>
+      <ReactMarkdown source={this.state.countryData.entryResDesc} />
       </div>
     );
   }

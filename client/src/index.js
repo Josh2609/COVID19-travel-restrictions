@@ -24,8 +24,8 @@ function Map() {
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-      <App />
       <Map />
+      <App />
     </HashRouter>
 
   </React.StrictMode>,
