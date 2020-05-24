@@ -22,6 +22,7 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api/country', require('./routes/country'));
+app.use('/api/scrape', require('./routes/getCountryData'));
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
