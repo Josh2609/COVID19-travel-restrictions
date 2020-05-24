@@ -18,7 +18,7 @@ router.get('/:countryName', function(req, res) {
     //     });
     // });
 
-    Scrape.getGovInfo(countryName, (err, countryData) => {
+    Scrape.getCountryInfoAPI(countryName, (err, countryData) => {
         res.send(countryData);
     });
 });
