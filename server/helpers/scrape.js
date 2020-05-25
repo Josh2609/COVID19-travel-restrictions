@@ -38,7 +38,7 @@ class Scrape {
   // uses the gov api to retrieve the country info
   static getCountryInfoAPI(countryName, callback) {
     console.log(countryName);
-    const url = "https://www.gov.uk/api/content/foreign-travel-advice/" + countryName;
+    const url = "https://www.gov.uk/api/content/foreign-travel-advice/" + countryName.toLowerCase();
 
     // uses the gov api to retrieve travel advice from FCO for a country
     // api returns json. the info we want is in body{details{parts}}
@@ -56,6 +56,7 @@ class Scrape {
       var aftSplit = newArr[0].body.split('<h2 id=\"regular-entry-requirements')[0]
       //remove normal entry requirements outwith covid
       var bSplit = aftSplit.split('travel documents meet their requirements.')[1]
+      console.log(bSplit)
       callback(null, bSplit);
     });
 

@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api/country', require('./routes/country'));
 app.use('/api/scrape', require('./routes/getCountryData'));
+app.use('/api/update', require('./routes/updateResDesc'));
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

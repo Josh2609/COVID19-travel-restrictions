@@ -42,8 +42,6 @@ class Country extends Component {
     return (
       <div>
       <div dangerouslySetInnerHTML={{ __html: this.state.countryData.entryResDesc}} />
-
-      <ReactMarkdown source={this.state.countryData.entryResDesc} />
       </div>
     );
   }

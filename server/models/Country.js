@@ -6,7 +6,8 @@ const countrySchema = mongoose.Schema({
     entryRestrictions: Boolean,
     exitRestrictions: Boolean,
     transitRestrictions: Boolean,
-    quarantineRequired: Boolean
+    quarantineRequired: Boolean,
+    entryResDesc: String
 })
 
 countrySchema.index({name : 1});
