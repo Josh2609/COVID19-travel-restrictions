@@ -16,15 +16,15 @@ router.get('/:countryName', function(req, res) {
 
 // updates the 'restrictions' field in the database for the specified country by getting data
 // from FCO
-router.put('/:countryName', function(req, res) {
+router.patch('/:countryName', function(req, res) {
     const countryName = req.params.countryName;
 
-    RestrictionsFCO.getRestrictions(countryName, (err, countryRescDesc) => {
+    RestrictionsFCO.getRestrictions(countryName, (err, restrictionsUpdate) => {
       Country.findOne({ name: countryName }).exec((err, data) => {
         if (err) {
             return res.status(400).json({ success: false, err })
         } else {
-            data.entryResDesc = countryRescDesc;
+            data.restrictions = restrictionsUpdate;
             data.save();
             res.status(200).json({ success: true});
         }
@@ -33,7 +33,7 @@ router.put('/:countryName', function(req, res) {
 });
 
 // updates all countries 'restrictions' in the database from FCO
-router.put('/', function (req, res) {
+router.patch('/', function (req, res) {
     // TODO
     //loop over every country and update
 });
