@@ -20,12 +20,17 @@ class RestrictionsFCO {
       var newArr = oldArr.filter(function (val) {
         return val.title && val.title.indexOf("Entry requirements") == 0;
       });
+
       //remove filler text before content
       var aftSplit = newArr[0].body.split('<h2 id=\"regular-entry-requirements')[0]
       //remove normal entry requirements outwith covid
-      var bSplit = aftSplit.split('travel documents meet their requirements.')[1]
-      console.log(bSplit)
-      callback(null, bSplit);
+      var bSplit = aftSplit.split('travel documents meet their requirements.</p>')[1]
+
+      if (bSplit.includes("in response to coronavirus")) {
+        callback(null, bSplit);
+      } else {
+        callback(null, "<h2>Restrictions currently under review.</h2>");
+      }
     });
   }
 }
