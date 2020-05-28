@@ -10,11 +10,12 @@ class Country extends Component {
   componentDidUpdate(prevProps, prevState) {
     var path = this.props.location.pathname;
     var res = path.split("/");
+    console.log("res" + res);
     if (this.state.countryData.name !== res[2]) {
       var querty = "http://192.168.1.225:5000/api/country/" + res[2]
       axios.get(querty)
         .then(res => {
-          const countryData = res.data.countryData;
+          const countryData = res.data.data;
           this.setState({ countryData });
         })
         .catch((err) => console.log(err));
@@ -29,19 +30,16 @@ class Country extends Component {
     var querty = "http://192.168.1.225:5000/api/country/" + res[2]
     axios.get(querty)
       .then(res => {
-        const countryData = res.data.countryData;
-        console.log(countryData)
+        const countryData = res.data.data;
         this.setState({ countryData });
       })
       .catch((err) => console.log(err));
-    
-
   }
 
   render() {
     return (
       <div>
-      <div dangerouslySetInnerHTML={{ __html: this.state.countryData.entryResDesc}} />
+      <div dangerouslySetInnerHTML={{ __html: this.state.countryData.restrictions}} />
       </div>
     );
   }
