@@ -20,11 +20,11 @@ router.patch('/:countryName', function(req, res) {
     const countryName = req.params.countryName;
 
     RestrictionsFCO.getRestrictions(countryName, (err, restrictionsUpdate) => {
-      Country.findOne({ name: countryName }).exec((err, data) => {
+      Country.findOne({ linkName: countryName }).exec((err, data) => {
         if (err) {
             return res.status(400).json({ success: false, err })
         } else {
-            data.restrictions = restrictionsUpdate;
+            data.restrictions.fco.description = restrictionsUpdate;
             data.save();
             res.status(200).json({ success: true});
         }

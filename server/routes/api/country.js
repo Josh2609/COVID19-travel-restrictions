@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
         if (err) {
             return res.status(400).json({ success: false, err })
         } else {
+            console.log(countries)
             res.status(200).json({
                     success: true, 
                     countries, postSize: 
@@ -20,7 +21,7 @@ router.get("/", (req, res) => {
 // returns information about a single country
 router.get("/:countryName", (req, res) => {
     country = req.params.countryName;
-    Country.findOne({name : country}).exec((err, data) => {
+    Country.findOne({linkName : country}).exec((err, data) => {
         if (err) {
             return res.status(400).json({ success: false, err })
         } else {

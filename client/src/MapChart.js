@@ -48,7 +48,7 @@ const MapChart = ({ setTooltipContent }) => {
             geographies.map(geo => {
               const d = data.find(s => s.iso3 === geo.properties.ISO_A3);
               var route = "";
-              d ? route = "/country/" + d.name : route = "/";
+              d ? route = "/country/" + d.linkName : route = "/";
               return (
                 <NavLink to={route} ><Geography
                   key={geo.rsmKey}
@@ -98,7 +98,7 @@ const MapChart = ({ setTooltipContent }) => {
                       stroke: "#000000"
                     }
                   }}
-                  fill={d ? colorArr[d["restrictionLevel"]] : "#F5F4F6"}
+                  fill={d ? colorArr[d.restrictions.level] : "#F5F4F6"}
                 /></NavLink>
               );
             })

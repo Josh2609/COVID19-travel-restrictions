@@ -1,14 +1,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const fcoSchema = mongoose.Schema({
+    description : String
+})
+
+const restrictionsSchema = mongoose.Schema({
+    entry : Boolean,
+    transit : Boolean,
+    quarantine : Boolean,
+    level : Number,
+    fco : fcoSchema 
+})
+
 const countrySchema = mongoose.Schema({
+    iso3: String,
     name: String,
-    entryRestrictions: Boolean,
-    exitRestrictions: Boolean,
-    transitRestrictions: Boolean,
-    quarantineRequired: Boolean,
-    restrictionLevel: Number,
-    restrictions: String
+    linkName: String,
+    restrictions: restrictionsSchema
 })
 
 countrySchema.index({name : 1});

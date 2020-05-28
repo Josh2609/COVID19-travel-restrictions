@@ -4,34 +4,32 @@ import ReactMarkdown from "react-markdown";
 
 class Country extends Component {
   state = {
-    countryData: [],
+    country: [],
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    var path = this.props.location.pathname;
-    var res = path.split("/");
-    console.log("res" + res);
-    if (this.state.countryData.name !== res[2]) {
-      var querty = "http://192.168.1.225:5000/api/country/" + res[2]
+  componentDidUpdate() {
+    var pathArr = this.props.location.pathname.split("/");
+    if (this.state.country != pathArr[2]) {
+      var querty = "http://192.168.1.225:5000/api/country/" + pathArr[2]
       axios.get(querty)
         .then(res => {
-          const countryData = res.data.data;
-          this.setState({ countryData });
+          const restrictionFCO = res.data.data.restrictions.fco.description
+          const country = res.data.data.linkName;
+          this.setState({ restrictionFCO, country });
         })
         .catch((err) => console.log(err));
     }
-
-
   }
+
   componentDidMount() {
     var path = this.props.location.pathname;
-    var res = path.split("/");
-    console.log(res[2])
-    var querty = "http://192.168.1.225:5000/api/country/" + res[2]
+    var pathArr = path.split("/");
+    var querty = "http://192.168.1.225:5000/api/country/" + pathArr[2]
     axios.get(querty)
       .then(res => {
-        const countryData = res.data.data;
-        this.setState({ countryData });
+        const restrictionFCO = res.data.data.restrictions.fco.description
+        const country = res.data.data.linkName;
+        this.setState({ restrictionFCO, country });
       })
       .catch((err) => console.log(err));
   }
@@ -39,7 +37,7 @@ class Country extends Component {
   render() {
     return (
       <div>
-      <div dangerouslySetInnerHTML={{ __html: this.state.countryData.restrictions}} />
+        <div dangerouslySetInnerHTML={{ __html: this.state.restrictionFCO }} />
       </div>
     );
   }
