@@ -54,7 +54,7 @@ const MapChart = ({ setTooltipContent }) => {
                   key={geo.rsmKey}
                   geography={geo}
                   onMouseEnter={() => {
-                    const { NAME } = geo.properties;
+                    const NAME = d ? d.name : "N/A";
                     setTooltipContent(
                       <div>
                         <h3>{NAME}</h3>
