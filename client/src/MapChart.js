@@ -59,19 +59,19 @@ const MapChart = ({ setTooltipContent }) => {
                       <div>
                         <h3>{NAME}</h3>
                         {d ? // if entryRestrictions true then entry not allowed
-                          d.entryRestrictions ?
+                          d.restrictions.entry ?
                             <p style={{ color: "red" }}> Entry Allowed: No </p>
                             : <p style={{ color: "green" }}>Entry Allowed: Yes</p>
                           : ""}
 
                         {d ? // if transitRestrictions true then transit not allowed
-                          d.transitRestrictions ?
+                          d.restrictions.transit ?
                             <p style={{ color: "red" }}> Transit Allowed: No </p>
                             : <p style={{ color: "green" }}>Transit Allowed: Yes</p>
                           : ""}
 
                         {d ?
-                          d.quarantineRequired ?
+                          d.restrictions.quarantine ?
                             <p style={{ color: "red" }}> Quarantine Required: Yes </p>
                             : <p style={{ color: "green" }}>Quarantine Required: No</p>
                           : ""}
@@ -83,7 +83,6 @@ const MapChart = ({ setTooltipContent }) => {
                   }}
                   style={{
                     default: {
-                      //fill: "#D6D6DA",
                       outline: "none",
                       stroke: "#000000"
                     },
