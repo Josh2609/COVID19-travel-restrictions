@@ -2,6 +2,7 @@
 //import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import NavBar from './components/NavBar'
 
 import { HashRouter } from "react-router-dom";
 import React, { useState } from "react";
@@ -24,6 +25,7 @@ function Map() {
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
+      <NavBar />
       <Map />
       <App />
     </HashRouter>
