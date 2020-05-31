@@ -5,6 +5,7 @@ import {
   NavLink
 } from "react-router-dom";
 import Country from './Country';
+import Table from 'react-bootstrap/Table'
 
 
 class CountryList extends Component {
@@ -27,7 +28,7 @@ class CountryList extends Component {
     return (
       <div>
         <input type="text" name="search"></input>
-        <table>
+        <Table striped bordered hover responsive>
           <thead>
             <tr>
               <th>Country</th>
@@ -40,7 +41,7 @@ class CountryList extends Component {
           <tbody>
             {
               this.state.countries.map((country, i) => {
-                var route = "/country/" + country.name
+                var route = "/country/" + country.linkName
                 return (
                   <tr key={i}>
                     <th><NavLink to={route} >{country.name}</NavLink></th>
@@ -54,7 +55,7 @@ class CountryList extends Component {
               })
             }
           </tbody>
-        </table>
+        </Table>
 
         <div className="content">
 

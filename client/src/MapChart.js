@@ -5,7 +5,7 @@ import {
   Geographies,
   Geography,
   Sphere,
-  Graticule
+  Graticule,
 } from "react-simple-maps";
 import axios from 'axios';
 
@@ -32,13 +32,18 @@ const MapChart = ({ setTooltipContent }) => {
     "#ff4c4c",
     "#ff0000"];
 
+//      <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
 
   return (
     <ComposableMap data-tip=""
+    //projection="geoOrthographic"
       projectionConfig={{
         rotate: [-10, 0, 0],
-        scale: 147
+        scale: 200
       }}
+      style={{
+        maxHeight: "600"
+   }}
     >
       <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
       <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
@@ -50,7 +55,8 @@ const MapChart = ({ setTooltipContent }) => {
               var route = "";
               d ? route = "/country/" + d.linkName : route = "/";
               return (
-                <NavLink to={route} ><Geography
+                <NavLink to={route} key={geo.rsmKey}>
+                  <Geography
                   key={geo.rsmKey}
                   geography={geo}
                   onMouseEnter={() => {

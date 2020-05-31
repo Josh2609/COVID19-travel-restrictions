@@ -1,8 +1,7 @@
-//import React from 'react';
-//import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import NavBar from './components/NavBar'
+import { Container } from 'react-bootstrap'
 
 import { HashRouter } from "react-router-dom";
 import React, { useState } from "react";
@@ -26,8 +25,10 @@ ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
       <NavBar />
-      <Map />
-      <App />
+      <Container>
+        <Map />
+        <App />
+      </Container>
     </HashRouter>
 
   </React.StrictMode>,
