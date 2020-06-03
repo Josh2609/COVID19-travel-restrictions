@@ -27,7 +27,6 @@ class CountryList extends Component {
   render() {
     return (
       <div>
-        <input type="text" name="search"></input>
         <Table striped bordered hover responsive>
           <thead>
             <tr>

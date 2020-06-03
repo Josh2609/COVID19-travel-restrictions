@@ -8,7 +8,7 @@ class Country extends Component {
 
   componentDidUpdate() {
     var pathArr = this.props.location.pathname.split("/");
-    if (this.state.country != pathArr[2]) {
+    if (this.state.country !== pathArr[2]) {
       var querty = "http://192.168.1.225:5000/api/country/" + pathArr[2]
       axios.get(querty)
         .then(res => {
