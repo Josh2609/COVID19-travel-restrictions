@@ -7,12 +7,16 @@ import { HashRouter } from "react-router-dom";
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import ReactTooltip from "react-tooltip";
+import { Route, useLocation } from "react-router-dom";
 
 
 import MapChart from "./MapChart";
 
 function Map() {
   const [content, setContent] = useState("");
+  if(useLocation().pathname === "/update") {
+    return null;
+  }
   return (
     <div>
       <MapChart setTooltipContent={setContent} />
@@ -26,7 +30,7 @@ ReactDOM.render(
     <HashRouter>
       <NavBar />
       <Container>
-        <Map />
+      <Route path="/" component={Map} />
         <App />
       </Container>
     </HashRouter>

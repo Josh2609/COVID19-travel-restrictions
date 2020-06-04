@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import {
-  Route,
-  NavLink
-} from "react-router-dom";
-import Country from './Country';
+import { NavLink } from "react-router-dom";
 import Table from 'react-bootstrap/Table'
 
 
@@ -55,12 +51,6 @@ class CountryList extends Component {
             }
           </tbody>
         </Table>
-
-        <div className="content">
-
-          <Route exact path="/country/:countryName" component={Country} />
-
-        </div>
       </div>
     );
   }

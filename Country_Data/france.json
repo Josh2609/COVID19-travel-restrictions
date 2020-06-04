@@ -1,0 +1,16 @@
+{
+    "iso3" : "FRA",
+    "name" : "France",
+    "linkName" : "france",
+    "restrictions" : {
+        "Entry Restrictions" : ["Passengers arriving from a non-Schengen Member State are not allowed to enter France.",
+            "This does not apply to spouses and children of nationals of France.",
+            "This does not apply to spouses and children of nationals of Andorra, Monaco, San Marino, Switzerland, Vatican City (Holy See) and an EEA Member State on their way home."],
+        "transit" : "false",
+        "level" : "3",
+        "fco" : {
+            "description" : "Transit allowed from June 2."
+        },
+        "quarantine" : "true"
+    }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, Button, Form, FormControl, NavItem } from 'react-bootstrap';
+import { Button, FormControl } from 'react-bootstrap';
 
 class Search extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav, Button, Form, FormControl, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, Form, NavItem } from 'react-bootstrap';
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
 
@@ -12,6 +12,7 @@ function NavBar() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} exact to="/"><NavItem>Home</NavItem></Nav.Link>
+          <Nav.Link as={NavLink} exact to="/update"><NavItem>Update</NavItem></Nav.Link>
           <Nav.Link as={NavLink} to="/about">About Us</Nav.Link>
         </Nav>
         <Form inline>
