@@ -28,7 +28,6 @@ class CountryList extends Component {
             <tr>
               <th>Country</th>
               <th>Entry Restrictions</th>
-              <th>Exit Restrictions</th>
               <th>Transit Restrictions</th>
               <th>Quarantine Required</th>
             </tr>
@@ -40,10 +39,9 @@ class CountryList extends Component {
                 return (
                   <tr key={i}>
                     <th><NavLink to={route} >{country.name}</NavLink></th>
-                    <th>{country.entryRestrictions ? "Yes" : "No"}</th>
-                    <th>{country.exitRestrictions ? "Yes" : "No"}</th>
-                    <th>{country.transitRestrictions ? "Yes" : "No"}</th>
-                    <th>{country.quarantineRequired ? "Yes" : "No"}</th>
+                    <th>{country.restrictions.entry ? "Yes" : "No"}</th>
+                    <th>{country.restrictions.transit ? "Yes" : "No"}</th>
+                    <th>{country.restrictions.quarantine ? "Yes" : "No"}</th>
                   </tr>
                 );
 
