@@ -9,10 +9,12 @@ class Update extends Component {
     super()
     this.handleMarkdownChange = this.handleMarkdownChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelectCountryChange = this.handleSelectCountryChange.bind(this)
     this.state = {
-       input: '# This is a header\n\nAnd this is a paragraph',
-    countryList: [] 
-  }
+      input: '# This is a header\n\nAnd this is a paragraph',
+      countryList: [],
+      selectedOption: null,
+    }
   }
 
   componentDidMount() {
@@ -21,17 +23,27 @@ class Update extends Component {
         var countryList = [];
         const countries = res.data.countries;
         for (var country in countries) {
-          countryList.push({value: countries[country].linkName, label: countries[country].name })
+          countryList.push({ value: countries[country].linkName, label: countries[country].name })
           console.log(countries[country].name)
         }
         console.log(res.data)
-       this.setState({ countryList });
+        this.setState({ countryList });
       })
       .catch((err) => console.log(err));
   }
 
   handleMarkdownChange(evt) {
-    this.setState({input: evt.target.value})
+    this.setState({ input: evt.target.value })
+  }
+
+  handleSelectCountryChange(evt) {
+    axios.get('http://192.168.1.225:5000/api/country/' + evt.value)
+      .then(res => {
+        this.setState({input: res.data.data.restrictions.fco.description})
+        alert(JSON.stringify(res.data.data.restrictions.fco.description))
+      
+      })
+    //alert(JSON.stringify(evt.value))
   }
 
   handleSubmit(evt) {
@@ -41,11 +53,11 @@ class Update extends Component {
     const data = JSON.stringify(Object.fromEntries(formData));
 
     axios({
-        method: 'post',
-        url: 'http://192.168.1.225:5000/api/update/',
-        headers: {'Content-Type': 'application/json' },
-        data
-        })
+      method: 'post',
+      url: 'http://192.168.1.225:5000/api/update/',
+      headers: { 'Content-Type': 'application/json' },
+      data
+    })
   }
 
 
@@ -56,9 +68,9 @@ class Update extends Component {
           <h1>Update</h1>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="update">
-            <Select name="country" isClearable options={this.state.countryList} />
+              <Select onChange={this.handleSelectCountryChange} name="country" isClearable options={this.state.countryList} />
               <Form.Label>Example textarea</Form.Label>
-              <Form.Control name="text" as="textarea" rows="5" value={this.state.input} onChange={this.handleMarkdownChange}/>
+              <Form.Control name="text" as="textarea" rows="5" value={this.state.input} onChange={this.handleMarkdownChange} />
             </Form.Group>
             <Button variant="outline-success" type="submit">Submit</Button>
           </Form>

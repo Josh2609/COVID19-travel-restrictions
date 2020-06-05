@@ -37,7 +37,6 @@ class Country extends Component {
   render() {
     return (
       <div>
-        <div dangerouslySetInnerHTML={{ __html: this.state.restrictionFCO }} />
         <ReactMarkdown escapeHtml={false} source={this.state.restrictionFCO} />
       </div>
     );
