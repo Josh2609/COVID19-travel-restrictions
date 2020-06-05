@@ -2,15 +2,11 @@ const express = require('express');
 const router = express.Router();
 const { Country } = require("../../models/Country");
 
-// returns information about a single country
 router.post("/", (req, res) => {
-    // var form = new multiparty.Form();
-    // form.parse(req, function(err, fields, files) {
-    //     console.log(fields)
-    // })
-    console.log(req.body.text)
 
-    Country.findOne({ linkName: 'canada' }).exec((err, data) => {
+    console.log(req.body.country)
+
+    Country.findOne({ linkName: req.body.country }).exec((err, data) => {
         if (err) {
             return res.status(400).json({ success: false, err })
         } else {
@@ -18,9 +14,7 @@ router.post("/", (req, res) => {
             data.save();
             res.status(200).json({ success: true});
         }
-    // res.status(200).json({
-    //     success: true, 
-    // })
+
     })
     
 })

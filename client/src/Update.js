@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Form, Container, FormControl, Button } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown'
 import axios from 'axios';
-
+import Select from 'react-select'
 
 class Update extends Component {
   constructor() {
@@ -10,8 +10,24 @@ class Update extends Component {
     this.handleMarkdownChange = this.handleMarkdownChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.state = {
-       input: '# This is a header\n\nAnd this is a paragraph'
-    }
+       input: '# This is a header\n\nAnd this is a paragraph',
+    countryList: [] 
+  }
+  }
+
+  componentDidMount() {
+    axios.get(`http://192.168.1.225:5000/api/country`)
+      .then(res => {
+        var countryList = [];
+        const countries = res.data.countries;
+        for (var country in countries) {
+          countryList.push({value: countries[country].linkName, label: countries[country].name })
+          console.log(countries[country].name)
+        }
+        console.log(res.data)
+       this.setState({ countryList });
+      })
+      .catch((err) => console.log(err));
   }
 
   handleMarkdownChange(evt) {
@@ -40,6 +56,7 @@ class Update extends Component {
           <h1>Update</h1>
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="update">
+            <Select name="country" isClearable options={this.state.countryList} />
               <Form.Label>Example textarea</Form.Label>
               <Form.Control name="text" as="textarea" rows="5" value={this.state.input} onChange={this.handleMarkdownChange}/>
             </Form.Group>

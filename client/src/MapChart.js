@@ -9,8 +9,8 @@ import {
 } from "react-simple-maps";
 import axios from 'axios';
 
-const geoUrl = "http://192.168.1.225:3000/world-110m.json"
-  //"https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+const geoUrl = //"http://192.168.1.225:3000/world-110m.json"
+  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
 
 const MapChart = ({ setTooltipContent }) => {

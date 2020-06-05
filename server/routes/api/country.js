@@ -4,7 +4,7 @@ const { Country } = require("../../models/Country");
 
 // returns all country information
 router.get("/", (req, res) => {
-    Country.find().exec((err, countries) => {
+    Country.find({}, null , {sort: {name: 1}}).exec((err, countries) => {
         if (err) {
             return res.status(400).json({ success: false, err })
         } else {
