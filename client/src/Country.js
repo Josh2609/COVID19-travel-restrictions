@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown'
 
 class Country extends Component {
   state = {
@@ -37,6 +38,7 @@ class Country extends Component {
     return (
       <div>
         <div dangerouslySetInnerHTML={{ __html: this.state.restrictionFCO }} />
+        <ReactMarkdown escapeHtml={false} source={this.state.restrictionFCO} />
       </div>
     );
   }

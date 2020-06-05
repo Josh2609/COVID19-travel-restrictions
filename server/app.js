@@ -1,6 +1,7 @@
 'use strict';
 
 const config = require('./config');
+const multiparty = require('multiparty');
 
 const express = require('express')
 const app = express()
@@ -19,6 +20,8 @@ app.set('config', config);
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+
 
 require("./routes")(app);
 
