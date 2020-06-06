@@ -4,7 +4,7 @@ const { Country } = require("../../models/Country");
 
 router.post("/", (req, res) => {
 
-    console.log(req.body.country)
+    console.log(req.body)
 
     Country.findOne({ linkName: req.body.country }).exec((err, data) => {
         if (err) {
