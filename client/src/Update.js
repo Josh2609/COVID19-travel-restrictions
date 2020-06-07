@@ -62,7 +62,6 @@ class Update extends Component {
         alert(JSON.stringify(res.data.data.restrictions.fco.description))
 
       })
-    //alert(JSON.stringify(evt.value))
   }
 
   handleSubmit(evt) {
@@ -78,8 +77,6 @@ class Update extends Component {
       data
     })
   }
-//                    <Form.Check type="radio" name="entryRadio" checked={this.state.country.restrictions.entry ? true : false} id="entryRadioYes" label="Yes" />
-
 
 handleEntryRadioChange(evt) { this.setState({entry: !this.state.entry}) }
 handleTransitRadioChange(evt) { this.setState({transit: !this.state.transit}) }

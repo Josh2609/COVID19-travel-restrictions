@@ -13,6 +13,7 @@ function NavBar() {
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} exact to="/"><NavItem>Home</NavItem></Nav.Link>
           <Nav.Link as={NavLink} exact to="/update"><NavItem>Update</NavItem></Nav.Link>
+          <Nav.Link as={NavLink} exact to="/create"><NavItem>Create</NavItem></Nav.Link>
           <Nav.Link as={NavLink} to="/about">About Us</Nav.Link>
         </Nav>
         <Form inline>
