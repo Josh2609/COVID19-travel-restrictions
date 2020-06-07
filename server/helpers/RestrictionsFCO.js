@@ -26,7 +26,7 @@ class RestrictionsFCO {
       //remove normal entry requirements outwith covid
       var bSplit = aftSplit.split('travel documents meet their requirements.</p>')[1]
 
-      if (bSplit.includes("in response to coronavirus")) {
+      if (bSplit.includes("in response to coronavirus") || bSplit.includes("Coronavirus restrictions") ||  bSplit.includes("Coronavirus")) {
         callback(null, bSplit);
       } else {
         callback(null, "<h2>Restrictions currently under review.</h2>");
