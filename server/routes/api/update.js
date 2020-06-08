@@ -13,6 +13,7 @@ router.post("/", (req, res) => {
             data.restrictions.entry = req.body.entryRadio || false;
             data.restrictions.transit = req.body.transitRadio || false;
             data.restrictions.quarantine = req.body.quarantineRadio || false;
+            data.restrictions.level = req.body.levelSelect;
             data.restrictions.fco.description = req.body.text || 'Restrictions currently under review.';
             data.save();
             res.status(200).json({ success: true});

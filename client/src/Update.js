@@ -117,6 +117,19 @@ handleQuarantineRadioChange(evt) { this.setState({quarantine: !this.state.quaran
                     <Form.Check type="radio" name="quarantineRadio" value="false" onChange={this.handleQuarantineRadioChange} checked={!this.state.quarantine} id="quarantineRadioNo" label="No" />
                   </Form.Group>
                 </Col>
+                <Col>
+                  <Form.Group controlId="levelSelect">
+                    <Form.Label>Example select</Form.Label>
+                    <Form.Control as="select" name="level">
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
               </Row>
 
             </Container>
