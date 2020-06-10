@@ -31,6 +31,7 @@
     "mongoose": "^5.9.14",
     "multiparty": "^4.2.1",
     "react-bootstrap": "^1.0.1",
+    "react-bootstrap-table-next": "^4.0.3",
     "react-markdown": "^4.3.1",
     "react-mde": "^10.0.3",
     "react-router-bootstrap": "^0.25.0",
