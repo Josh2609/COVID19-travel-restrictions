@@ -80,7 +80,7 @@ class Create extends Component {
                 </Col>
                 <Col>
                   <Form.Group controlId="levelSelect">
-                    <Form.Label>Example select</Form.Label>
+                    <Form.Label>Restriction Level</Form.Label>
                     <Form.Control as="select" name="levelSelect">
                       <option>0</option>
                       <option>1</option>

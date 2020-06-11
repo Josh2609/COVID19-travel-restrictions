@@ -21,6 +21,7 @@ class Update extends Component {
       entry: false,
       transit: false,
       quarantine: false,
+      level: 0,
       country: {
         name: "",
         linkName: "",
@@ -28,6 +29,7 @@ class Update extends Component {
           entry: false,
           transit: false,
           quarantine: false
+          
         }
       }
     }
@@ -55,12 +57,11 @@ class Update extends Component {
   handleSelectCountryChange(evt) {
     axios.get('http://192.168.1.225:5000/api/country/' + evt.value)
       .then(res => {
-        this.setState({ input: res.data.data.restrictions.fco.description })
+        this.setState({input: res.data.data.restrictions.fco.description })
         this.setState({entry: res.data.data.restrictions.entry})
         this.setState({transit: res.data.data.restrictions.transit})
         this.setState({quarantine: res.data.data.restrictions.quarantine})
-        alert(JSON.stringify(res.data.data.restrictions.fco.description))
-
+        this.setState({level: res.data.data.restrictions.level})
       })
   }
 
@@ -84,6 +85,7 @@ handleQuarantineRadioChange(evt) { this.setState({quarantine: !this.state.quaran
 
   render() {
     return (
+      
       <div>
         <Container>
           <h1>Update</h1>
@@ -119,8 +121,8 @@ handleQuarantineRadioChange(evt) { this.setState({quarantine: !this.state.quaran
                 </Col>
                 <Col>
                   <Form.Group controlId="levelSelect">
-                    <Form.Label>Example select</Form.Label>
-                    <Form.Control as="select" name="levelSelect">
+                    <Form.Label>Restriction Level</Form.Label>
+                    <Form.Control as="select" value={this.state.level} name="levelSelect">
                       <option>0</option>
                       <option>1</option>
                       <option>2</option>
