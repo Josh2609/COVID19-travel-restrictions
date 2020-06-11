@@ -13,6 +13,7 @@ class Update extends Component {
     this.handleEntryRadioChange = this.handleEntryRadioChange.bind(this)
     this.handleTransitRadioChange = this.handleTransitRadioChange.bind(this)
     this.handleQuarantineRadioChange = this.handleQuarantineRadioChange.bind(this)
+    this.handleLevelSelectChange = this.handleLevelSelectChange.bind(this)
 
     this.state = {
       input: '# This is a header\n\nAnd this is a paragraph',
@@ -82,6 +83,7 @@ class Update extends Component {
 handleEntryRadioChange(evt) { this.setState({entry: !this.state.entry}) }
 handleTransitRadioChange(evt) { this.setState({transit: !this.state.transit}) }
 handleQuarantineRadioChange(evt) { this.setState({quarantine: !this.state.quarantine}) }
+handleLevelSelectChange(evt) { this.setState({level: evt.value}) }
 
   render() {
     return (
@@ -122,7 +124,7 @@ handleQuarantineRadioChange(evt) { this.setState({quarantine: !this.state.quaran
                 <Col>
                   <Form.Group controlId="levelSelect">
                     <Form.Label>Restriction Level</Form.Label>
-                    <Form.Control as="select" value={this.state.level} name="levelSelect">
+                    <Form.Control as="select" value={this.state.level}  onChange={this.handleLevelSelectChange} name="levelSelect">
                       <option>0</option>
                       <option>1</option>
                       <option>2</option>
