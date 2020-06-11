@@ -81,7 +81,7 @@ class Create extends Component {
                 <Col>
                   <Form.Group controlId="levelSelect">
                     <Form.Label>Example select</Form.Label>
-                    <Form.Control as="select" name="level">
+                    <Form.Control as="select" name="levelSelect">
                       <option>0</option>
                       <option>1</option>
                       <option>2</option>

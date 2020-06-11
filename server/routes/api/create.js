@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
       entry: req.body.entryRadio,
       transit: req.body.transitRadio,
       quarantine: req.body.quarantineRadio,
-      level: req.body.level,
+      level: req.body.levelSelect,
       fco: {
         description: req.body.text
       }
