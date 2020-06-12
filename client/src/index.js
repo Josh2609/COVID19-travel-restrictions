@@ -15,7 +15,8 @@ import MapChart from "./MapChart";
 function Map() {
   const [content, setContent] = useState("");
   var path = useLocation().pathname
-  if(path === "/update" || path === "/create") {
+  console.log("path= " + path)
+  if(path !== "/" && !path.includes("/country/")) {
     return null;
   }
   return (

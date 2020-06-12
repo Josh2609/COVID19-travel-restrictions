@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Form, Container, Col, Button, Row } from 'react-bootstrap';
+import { Form, Container, Col, Button, Row, Alert } from 'react-bootstrap';
 import ReactMarkdown from 'react-markdown'
 import axios from 'axios';
 import Select from 'react-select'
+import queryString from 'query-string';
 
 class Update extends Component {
   constructor() {
@@ -64,6 +65,7 @@ class Update extends Component {
         this.setState({quarantine: res.data.data.restrictions.quarantine})
         this.setState({level: res.data.data.restrictions.level})
       })
+      this.props.history.push("/update/" + evt.value)
   }
 
   handleSubmit(evt) {
@@ -77,6 +79,16 @@ class Update extends Component {
       url: 'http://192.168.1.225:5000/api/update/',
       headers: { 'Content-Type': 'application/json' },
       data
+    }).then(res => {
+      if (res.status === 200)
+      {
+        window.scrollTo(0, 0)
+        this.props.history.push("?success=true")
+      } else 
+      {
+        window.scrollTo(0, 0)
+        this.props.history.push("?success=false")
+      }
     })
   }
 
@@ -86,10 +98,13 @@ handleQuarantineRadioChange(evt) { this.setState({quarantine: !this.state.quaran
 handleLevelSelectChange(evt) { this.setState({level: evt.value}) }
 
   render() {
+    var params = queryString.parse(this.props.location.search)
+    console.log(params.success)
     return (
-      
       <div>
         <Container>
+        <Alert key="successAlert" show={params.success == "true"} variant="success">Update Successful</Alert>
+        <Alert key="successAlert" show={params.success == "false"} variant="danger">Update Failed</Alert>  
           <h1>Update</h1>
           <Form onSubmit={this.handleSubmit}>
 

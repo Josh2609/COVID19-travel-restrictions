@@ -13,7 +13,7 @@ export default class App extends React.Component {
       <div>
         <Route exact path="/" component={CountryList} />
         <Route exact path="/country/:countryName" component={Country} />
-        <Route exact path="/update" component={Update} />
+        <Route path="/update/" component={Update} />
         <Route exact path="/create" component={Create} />
       </div>
     )
